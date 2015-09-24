@@ -9,7 +9,8 @@ makeCacheMatrix <- function(x = matrix()) {
         ## creates the variable i with NULL as default where the inverse will be cached
         i <- NULL               
         
-        ## Set closure: when called it will overwrite the value of x and assign NULL to the i, so the inverse should be computed again (no cache)
+        ## Set closure: when called it will overwrite the value of x and assign NULL to i
+        ## so the inverse should be computed again (no cache)
         set <- function(y) {    
                 x <<- y
                 i <<- NULL
@@ -31,7 +32,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## This function computes the inverse of the special "matrix" returned by makeCacheMatrix above. If the inverse has already been calculated (and the matrix has not changed), then the cachesolve retrieve the inverse from the cache.
+## This function computes the inverse of the special "matrix" returned by makeCacheMatrix above. 
+## If the inverse has already been calculated (and the matrix has not changed), then the cachesolve 
+## retrieve the inverse from the cache.
 
 ## Arguments: 
 ## x should be the special matrix
@@ -46,7 +49,7 @@ cacheSolve <- function(x, ...) {
                 return(i)
         }
         
-        ## get the matrix itself, compute and chache the inverse of it
+        ## get the matrix itself, compute and cache the inverse of it
         data <- x$get()           
         i <- solve(data, ...)
         x$setinv(i)
