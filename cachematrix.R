@@ -18,10 +18,10 @@ makeCacheMatrix <- function(x = matrix()) {
         ##get closure: when called it returns the matrix x
         get <- function() x                
         
-        ##setinv cluser:  when called it will overwrite the value of i
+        ##setinv closuser:  when called it will overwrite the value of i
         setinv <- function(inv) i <<- inv  
         
-        ## when called it returns the value of i   
+        ##get inv closure:  when called it returns the value of i   
         getinv <- function() i             
         
         ## Return the special "matrix"
